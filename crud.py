@@ -72,7 +72,7 @@ def update_persona():
             while True:
                 print(f"""
                     ===========================================
-                    ||            Gestor de persona          ||
+                    ||        actualizador de persona        ||
                     ===========================================
                     1.rut: {persona.rut}
                     2.nombre: {persona.nombre}
@@ -122,7 +122,14 @@ def update_persona():
     print()
 
 def delete_persona():
-    pass
+    rut_busqueda = input("Ingrese el rut de la persaona a editar (E): ")
+    for persona in personas:
+        if persona.rut:
+            print(f"Eliminando persona: {persona}")
+            personas.remove(persona)
+            print(f"Persona con rut {rut_busqueda} eliminado exitosamente")
+    print(f"persona con rut {rut_busqueda}, no encontrada")
+    input("Precione ENTER para continuar......")
 
 while True:
     print(
@@ -136,13 +143,15 @@ while True:
         0.salir
         """
     )
-    opcion = input("Ingrese una opcion [1-2-3-0]: ")
+    opcion = input("Ingrese una opcion [1-2-3-4-0]: ")
     if opcion == "1":
         create_persona()
     elif opcion == "2":
         read_persona()
     elif opcion == "3":
         update_persona()
+    elif opcion == "4":
+        delete_persona()
     elif opcion == "0":
         print("BYE..")
         break
